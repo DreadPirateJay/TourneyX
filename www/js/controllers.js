@@ -49,7 +49,7 @@ angular.module('tourneyx.controllers', ['ngCordova'])
       };
 
       $cordovaCamera.getPicture(options).then(function (imgUrl) {
-        console.log(imgUrl);
+        alert(imgUrl);
       });
     };
   }.bind(this));
