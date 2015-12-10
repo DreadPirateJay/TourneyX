@@ -7,13 +7,17 @@ angular.module('starter.controllers', [])
   '$localForage',
   '$state',
   function ($http, $ionicPopup, Auth, $localForage, $state) {
+    $localForage.getItem('userId', function (userId) {
+      if (userId) { $state.go('tab.tourneys'); }
+    });
+
     this.login = function () {
       Auth.login(this.creds)
       .success(function (response) {
         $localForage
         .setItem('userId', response.data)
         .then(function () {
-          $state.go('tab.dash');
+          $state.go('tab.tourneys');
         });
       })
       .error(function () {
@@ -26,6 +30,6 @@ angular.module('starter.controllers', [])
   }
 ])
 
-.controller('DashCtrl', [function(){
+.controller('TourneysCtrl', [function(){
 
 }]);
