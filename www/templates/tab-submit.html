@@ -1,0 +1,21 @@
+<ion-view view-title="Submit">
+  <ion-content>
+
+    <img ng-src="{{ ctrl.imgUrl }}" width="100%">
+
+    <button class="button button-block" ng-click="ctrl.takePhoto()">Take Photo</button>
+
+    <div class="list">
+      <label class="item item-input">
+        <input type="number" placeholder="Enter Length (in.)" ng-model="length">
+      </label>
+
+      <label class="item item-input">
+        <input type="number" placeholder="Enter Weight (lbs.)" ng-model="weight">
+      </label>
+    </div>
+
+    <button class="button button-block button-balanced" ng-click="submit()">Submit</button>
+
+  </ion-content>
+</ion-view>
