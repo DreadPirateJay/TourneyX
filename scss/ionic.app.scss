@@ -21,3 +21,71 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+#dashboard {
+  .item {
+    min-height: 110px;
+    padding-left: 110px;
+
+    h2 {
+      margin-left: 0;
+      font-size: 26px;
+    }
+
+    .start-date {
+      height: 90px;
+      width: 90px;
+      padding-top: 0px;
+      border: 4px solid #015fa7;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      text-align: center;
+      display: inline-block;
+      color: #015fa7;
+      font-size: 11px;
+      line-height: 2.5em;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+
+      .month {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        padding-left: 14px;
+      }
+
+      .day {
+        display: block;
+        font-size: 38px;
+        font-weight: bold;
+        padding-top: 25px;
+        padding-left: 7px;
+      }
+
+      .year {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        padding-top: 55px;
+        padding-left: 14px;
+      }
+    }
+
+    .location {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .meta {
+      font-size: 11px;
+      color: #4b4b4b;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .fee {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}

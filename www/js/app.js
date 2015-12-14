@@ -1,7 +1,6 @@
 'use strict';
 angular.module('tourneyx', [
   'ionic','ionic.service.core',
-
   'tourneyx.controllers',
   'tourneyx.services',
   'LocalForageModule'

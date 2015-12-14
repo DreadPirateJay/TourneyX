@@ -1,16 +1,35 @@
-<ion-view view-title="Dashboard">
-
-
+<ion-view id="dashboard" view-title="Dashboard">
   <ion-content class="padding">
 
-    <h1>Tournaments</h1>
+    <h1>Upcoming Tournaments</h1>
 
-    <ion-list>
-      <ion-item ng-repeat="t in ctrl.tourneys">
-        <a ui-sref="tab.tourney({ id: t.id })">
-          <h2>{{ t.name }}</h2>
-        </a>
-      </ion-item>
-    </ion-list>
+    <div class="list card">
+      <a class="item item-icon-left"
+         ui-sref="tab.tourney({ id: t.id })"
+         ng-repeat="t in ctrl.tourneys">
+        <span class="start-date">
+          <span class="icon month">
+            {{ t.startDate | amDateFormat:'MMM' }}
+          </span>
+          <span class="icon day">
+            {{ t.startDate | amDateFormat:'DD' }}
+          </span>
+          <span class="icon year">
+            {{ t.startDate | amDateFormat:'YYYY' }}
+          </span>
+        </span>
+        <h2 class="title">{{ t.name }}</h2>
+        <div class="location">{{ t.location }}</div>
+        <div class="meta">
+          {{ t.startDate | amDateFormat:'MMMM DD' }}
+          - {{ t.endDate | amDateFormat:'MMMM DD, YYYY' }}
+          <span class="team" ng-show="t.teamTourney">• Team Tourney</span>
+          <span class="types">• Fish Types:
+            <span class="type" ng-repeat="type in t.fishTypes">{{ type }}</span>
+          </span>
+        </div>
+        <div class="fee">Angler Entry Fee: {{ t.entryFee }}</div>
+      </a>
+    </div>
   </ion-content>
 </ion-view>

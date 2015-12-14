@@ -1,5 +1,5 @@
 'use strict';
-angular.module('tourneyx.controllers', ['ngCordova'])
+angular.module('tourneyx.controllers', ['ngCordova', 'angularMoment'])
 
 .controller('LoginCtrl', function (
   $scope,
@@ -10,7 +10,7 @@ angular.module('tourneyx.controllers', ['ngCordova'])
 ) {
   Auth.getUser().then(function (userId) {
     if (userId) {
-      $state.go('tab.tourneys');
+      $state.go('list');
     }
   });
 

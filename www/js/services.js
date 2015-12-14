@@ -47,8 +47,26 @@ angular.module('tourneyx.services', [])
 
 .factory('Tourneys', function ($http, $filter, apiUrl) {
   var tourneys = [
-    { id: 1, name: 'ABC Tournament', info: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis rerum aut.' },
-    { id: 2, name: 'XYZ Invitational', info: 'Est non earum, error itaque doloribus odit officiis magni possimus.'}
+    {
+      id: 1,
+      name: 'TourneyX Test',
+      location: 'Madison, MS',
+      startDate: '2015-12-12',
+      endDate: '2015-12-31',
+      teamTourney: false,
+      fishTypes: ['Bass'],
+      entryFee: 'Free'
+    },
+    {
+      id: 2,
+      name: 'TourneyX Test w/ Teams',
+      location: 'Madison, MS',
+      startDate: '2015-12-13',
+      endDate: '2015-12-31',
+      teamTourney: true,
+      fishTypes: ['Bass'],
+      entryFee: 'Free'
+    }
   ];
 
   return {
