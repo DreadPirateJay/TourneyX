@@ -1,7 +1,7 @@
 'use strict';
 angular.module('tourneyx', [
   'ionic','ionic.service.core',
-  
+
   'tourneyx.controllers',
   'tourneyx.services',
   'LocalForageModule'
@@ -27,6 +27,18 @@ angular.module('tourneyx', [
 
   $stateProvider
 
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl as ctrl'
+  })
+
+  .state('list', {
+    url: '/list',
+    templateUrl: 'templates/list.html',
+    controller: 'ListCtrl as ctrl'
+  })
+
   // setup an abstract state for the tabs directive
   .state('tab', {
     url: '/tab',
@@ -35,12 +47,12 @@ angular.module('tourneyx', [
   })
 
   // Each tab has its own nav history stack:
-  .state('tab.tourneys', {
-    url: '/tourneys',
+  .state('tab.tourney', {
+    url: '/tourney/:id',
     views: {
-      'tab-tourneys': {
-        templateUrl: 'templates/tab-tourneys.html',
-        controller: 'TourneysCtrl as ctrl'
+      'tab-tourney': {
+        templateUrl: 'templates/tab-tourney.html',
+        controller: 'TourneyCtrl as ctrl'
       }
     }
   })
@@ -53,12 +65,6 @@ angular.module('tourneyx', [
         controller: 'SubmitCtrl as ctrl'
       }
     }
-  })
-
-  .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl as ctrl'
   });
 
   $urlRouterProvider.otherwise('/login');

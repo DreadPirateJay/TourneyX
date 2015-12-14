@@ -1,4 +1,5 @@
 {
   "name": "TourneyX",
-  "app_id": "592110b2"
+  "app_id": "592110b2",
+  "gulpStartupTasks": ["watch"]
 }

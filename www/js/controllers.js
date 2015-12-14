@@ -8,15 +8,17 @@ angular.module('tourneyx.controllers', ['ngCordova'])
   $ionicPopup,
   Auth
 ) {
-  if (Auth.getUser()) {
-    $state.go('tab.tourneys');
-  }
+  Auth.getUser().then(function (userId) {
+    if (userId) {
+      $state.go('tab.tourneys');
+    }
+  });
 
   this.login = function () {
     Auth.login(this.creds);
 
     $scope.$on('event:auth-login-confirmed', function () {
-      $state.go('tab.tourneys');
+      $state.go('list');
     });
 
     $scope.$on('event:auth-login-failed', function () {
@@ -29,10 +31,21 @@ angular.module('tourneyx.controllers', ['ngCordova'])
   };
 })
 
-.controller('TourneysCtrl', function (Tourneys) {
+.controller('NavBtnsCtrl', function ($scope, Auth) {
+  $scope.logout = Auth.logout;
+})
+
+.controller('ListCtrl', function ($scope, $state, Tourneys) {
 
   this.tourneys = Tourneys.getTourneys();
 
+  $scope.$on('event:auth-logout-complete', function () {
+    $state.go('login');
+  });
+})
+
+.controller('TourneyCtrl', function ($stateParams, Tourneys) {
+  this.tourney = Tourneys.find($stateParams.id);
 })
 
 .controller('SubmitCtrl', function ($ionicPlatform, $cordovaCamera) {

@@ -1,0 +1,16 @@
+<ion-view view-title="Dashboard">
+
+
+  <ion-content class="padding">
+
+    <h1>Tournaments</h1>
+
+    <ion-list>
+      <ion-item ng-repeat="t in ctrl.tourneys">
+        <a ui-sref="tab.tourney({ id: t.id })">
+          <h2>{{ t.name }}</h2>
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
