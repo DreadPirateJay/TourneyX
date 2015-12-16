@@ -1,0 +1,13 @@
+<ion-view id="register" view-title="Register">
+  <ion-content class="padding">
+    <h1 class="name">{{ ctrl.tourney.name }}</h1>
+    <div class="location">{{ ctrl.tourney.location }}</div>
+    <div class="meta">
+      {{ ctrl.tourney.startDate | amDateFormat:'MMMM DD' }}
+      - {{ ctrl.tourney.endDate | amDateFormat:'MMMM DD, YYYY' }}
+      <span ng-if="ctrl.tourney.teamTourney"> - Team Tournament</span>
+    </div>
+
+    <button class="button button-stable">Register for Tourney</button>
+  </ion-content>
+</ion-view>

@@ -4,8 +4,8 @@
     <h1>Upcoming Tournaments</h1>
 
     <div class="list card">
-      <a class="item item-icon-left"
-         ui-sref="tab.tourney({ id: t.id })"
+      <a class="item item-icon-left item-icon-right"
+         ng-click="ctrl.click(t.id)"
          ng-repeat="t in ctrl.tourneys">
         <span class="start-date">
           <span class="icon month">
@@ -29,6 +29,8 @@
           </span>
         </div>
         <div class="fee">Angler Entry Fee: {{ t.entryFee }}</div>
+        <i ng-if="t.id === 1" class="icon ion-chevron-right"></i>
+        <i ng-if="t.id === 2" class="icon ion-compose"></i>
       </a>
     </div>
   </ion-content>

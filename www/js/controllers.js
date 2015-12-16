@@ -8,9 +8,9 @@ angular.module('tourneyx.controllers', ['ngCordova', 'angularMoment'])
   $ionicPopup,
   Auth
 ) {
-  Auth.getUser().then(function (userId) {
+  Auth.getUserId().then(function (userId) {
     if (userId) {
-      $state.go('list');
+      $state.go('tourneys');
     }
   });
 
@@ -18,7 +18,7 @@ angular.module('tourneyx.controllers', ['ngCordova', 'angularMoment'])
     Auth.login(this.creds);
 
     $scope.$on('event:auth-login-confirmed', function () {
-      $state.go('list');
+      $state.go('tourneys');
     });
 
     $scope.$on('event:auth-login-failed', function () {
@@ -35,17 +35,45 @@ angular.module('tourneyx.controllers', ['ngCordova', 'angularMoment'])
   $scope.logout = Auth.logout;
 })
 
-.controller('ListCtrl', function ($scope, $state, Tourneys) {
+.controller('TourneysCtrl', function ($rootScope, $scope, $state, Tourneys, User) {
+  this.tourneys = Tourneys.get();
 
-  this.tourneys = Tourneys.getTourneys();
+  User.getRegTourneys().then(function (regTourneys) {
+    this.tourneys.map(function (tourney) {
+      if (regTourneys.indexOf(tourney.id) > 0) {
+        tourney.registered = true
+      } else {
+        tourney.registered = false;
+      }
+      return tourney;
+    }.bind(this));
+  }.bind(this));
+
+  this.click = function (tourneyId) {
+    User.getRegTourneys().then(function (regIds) {
+      if (regIds.indexOf(tourneyId) >= 0) {
+        $state.go('showTourney', { id: tourneyId });
+      } else {
+        $state.go('registerTourney', { id: tourneyId });
+      }
+    }.bind(this));
+  };
 
   $scope.$on('event:auth-logout-complete', function () {
     $state.go('login');
   });
 })
 
-.controller('TourneyCtrl', function ($stateParams, Tourneys) {
-  this.tourney = Tourneys.find($stateParams.id);
+.controller('RegisterCtrl', function ($stateParams, Tourneys) {
+  this.tourney = Tourneys.get($stateParams.id);
+
+  console.log(this.tourney);
+})
+
+.controller('TourneyCtrl', function ($state, $stateParams, Tourneys) {
+  this.tourney = Tourneys.get($stateParams.id);
+
+
 })
 
 .controller('SubmitCtrl', function ($ionicPlatform, $cordovaCamera) {

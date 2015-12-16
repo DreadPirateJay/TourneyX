@@ -9757,19 +9757,22 @@ a.button {
       display: block;
       font-size: 18px;
       font-weight: bold;
-      padding-left: 14px; }
+      position: absolute;
+      left: 25px; }
     #dashboard .item .start-date .day {
       display: block;
       font-size: 38px;
       font-weight: bold;
-      padding-top: 25px;
-      padding-left: 7px; }
+      position: absolute;
+      top: 25px;
+      left: 10px; }
     #dashboard .item .start-date .year {
       display: block;
       font-size: 14px;
       font-weight: bold;
-      padding-top: 55px;
-      padding-left: 14px; }
+      position: absolute;
+      top: 55px;
+      left: 14px; }
   #dashboard .item .location {
     font-size: 18px;
     font-weight: bold; }
@@ -9780,3 +9783,21 @@ a.button {
   #dashboard .item .fee {
     font-size: 16px;
     font-weight: bold; }
+
+#register h1.name {
+  font-weight: bold;
+  line-height: 1.2em;
+  font-size: 34px;
+  margin: 0 0 15px 0;
+  color: #015fa7; }
+
+#register .location {
+  font-size: 18px;
+  margin: 10px 0 0 0;
+  font-weight: bold; }
+
+#register .meta {
+  font-size: 11px;
+  color: #4b4b4b;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px; }

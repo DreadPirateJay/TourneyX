@@ -32,28 +32,22 @@ angular.module('tourneyx', [
     controller: 'LoginCtrl as ctrl'
   })
 
-  .state('list', {
-    url: '/list',
+  .state('tourneys', {
+    url: '/tourneys',
     templateUrl: 'templates/list.html',
-    controller: 'ListCtrl as ctrl'
+    controller: 'TourneysCtrl as ctrl'
   })
 
-  // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
+  .state('registerTourney', {
+    url: '/tourneys/registe/:id',
+    templateUrl: 'templates/register.html',
+    controller: 'RegisterCtrl as ctrl'
   })
 
-  // Each tab has its own nav history stack:
-  .state('tab.tourney', {
-    url: '/tourney/:id',
-    views: {
-      'tab-tourney': {
-        templateUrl: 'templates/tab-tourney.html',
-        controller: 'TourneyCtrl as ctrl'
-      }
-    }
+  .state('showTourney', {
+    url: '/tourneys/:id',
+    templateUrl: 'templates/show.html',
+    controller: 'TourneyCtrl as ctrl'
   })
 
   .state('tab.submit', {

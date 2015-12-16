@@ -39,7 +39,7 @@ angular.module('tourneyx.services', [])
       });
     },
 
-    getUser: function () {
+    getUserId: function () {
       return $localForage.getItem('userId');
     }
   };
@@ -70,15 +70,33 @@ angular.module('tourneyx.services', [])
   ];
 
   return {
-    getTourneys: function () {
+    get: function (id) {
       // return $http.get(apiUrl + '/get.json?action=tourney_list');
-      return tourneys;
+      if (id) {
+        return $filter('filter')(tourneys, function (t) {
+          return t.id === parseInt(id, 10);
+        })[0];
+      } else {
+        return tourneys;
+      }
+    }
+  };
+})
+
+.factory('User', function ($q, $localForage) {
+  return {
+    getRegTourneys: function () {
+      var dfd = $q.defer();
+
+      $localForage.setItem('registeredTourneys', [1]).then(function () {
+        dfd.resolve($localForage.getItem('registeredTourneys'));
+      });
+
+      return dfd.promise;
     },
 
-    find: function (id) {
-      return $filter('filter')(tourneys, function (t) {
-        return t.id === parseInt(id, 10);
-      })[0];
+    getId: function () {
+      return $localForage.getItem('userId');
     }
   };
 });
